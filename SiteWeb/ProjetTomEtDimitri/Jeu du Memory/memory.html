@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<link rel="stylesheet" href="../main.css">
+<title>Memory</title>
+<script src="/Jeu du Memory/memoire.js"></script>
+<header>
+	<nav>
+		<li class="menu"><a href="../Porte/Porte.html">JEU DES 3 PORTES</a></li>
+		<li class="menu"><a href="../RandomJS/random.html">JEU DU + OU -</a></li>
+		<li class="menu"><a href="../index.html">ACCUEIL</a></li>
+	</nav>
+</header>
+<body>
+	<section style="display: flex ;">
+
+		<div style="padding-top: 100px; padding-left: 90px;">
+			<table id="tapis">
+				<tr>
+					<td><img src="imagememory/fondcarte.png" class="imgMemo"></td>
+					<td><img src="imagememory/fondcarte.png" class="imgMemo"></td>
+					<td><img src="imagememory/fondcarte.png" class="imgMemo"></td>
+					<td><img src="imagememory/fondcarte.png" class="imgMemo"></td>
+				</tr>
+				<tr>
+					<td><img src="imagememory/fondcarte.png" class="imgMemo"></td>
+					<td><img src="imagememory/fondcarte.png" class="imgMemo"></td>
+					<td><img src="imagememory/fondcarte.png" class="imgMemo"></td>
+					<td><img src="imagememory/fondcarte.png" class="imgMemo"></td>
+				</tr>
+				<tr>
+					<td><img src="imagememory/fondcarte.png" class="imgMemo"></td>
+					<td><img src="imagememory/fondcarte.png" class="imgMemo"></td>
+					<td><img src="imagememory/fondcarte.png" class="imgMemo"></td>
+					<td><img src="imagememory/fondcarte.png" class="imgMemo"></td>
+				</tr>
+				<tr>
+					<td><img src="imagememory/fondcarte.png" class="imgMemo"></td>
+					<td><img src="imagememory/fondcarte.png" class="imgMemo"></td>
+					<td><img src="imagememory/fondcarte.png" class="imgMemo"></td>
+					<td><img src="imagememory/fondcarte.png" class="imgMemo"></td>
+				</tr>
+				</table>
+		</div>
+		<div id="divRegle">
+			<p style="text-transform: uppercase;">Voici la regle du celebre jeu Memory, aussi connu sous le nom du Jeu des paires.
+				Le joueur commence et retourne 2 cartes, 2 possibilites:
+				Si les cartes ne sont pas identiques (ce n'est pas une paire), il les retourne.
+				Par contre, si les 2 cartes sont identiques, c'est une paire! Le joueur garde les cartes et rejoue.
+				Quand le joueur a trouve toutes les paires du jeu, la partie est terminee. C'est la victoire!</p>
+		</div>
+			<script>
+				var motifsCartes=[1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8];
+	var etatsCartes=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]; 
+	/*etatsCartes=[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]*/
+	var cartesRetournees=[];
+	var nbPairesTrouvees=0;
+	var imgCartes=document.getElementById("tapis").getElementsByTagName("img");		
+	for(var i=0;i<imgCartes.length;i++){
+		imgCartes[i].noCarte=i; //Ajout de la propriété noCarte à l'objet img
+		imgCartes[i].onclick=function(){
+			controleJeu(this.noCarte);
+		}                      
+	}
+	initialiseJeu();
+	function majAffichage(noCarte){
+		switch(etatsCartes[noCarte]){
+			case 0:
+				imgCartes[noCarte].src="../Jeu du Memory/imagememory/fondcarte.png";
+				break;
+			case 1:
+				imgCartes[noCarte].src="../Jeu du Memory/imagememory/carte"+motifsCartes[noCarte]+".png";
+				break;
+			case -1:
+				imgCartes[noCarte].style.visibility="hidden";
+				break;
+		}
+	}
+	function rejouer(){
+		window.location.assign("memoVictoire.html");
+		/*location.reload();*/
+	}
+	function initialiseJeu(){
+		for(var position=motifsCartes.length-1; position>=1; position--){
+			var hasard=Math.floor(Math.random()*(position+1));
+			var sauve=motifsCartes[position];
+			motifsCartes[position]=motifsCartes[hasard];
+			motifsCartes[hasard]=sauve;
+		}
+	}
+	function controleJeu(noCarte){
+		if(cartesRetournees.length<2){
+			if(etatsCartes[noCarte]==0){
+				etatsCartes[noCarte]=1;
+				cartesRetournees.push(noCarte);
+				majAffichage(noCarte);
+			}
+			if(cartesRetournees.length==2){
+				var nouveauEtat=0;
+				if(motifsCartes[cartesRetournees[0]]==motifsCartes[cartesRetournees[1]]){
+					nouveauEtat=-1;
+					nbPairesTrouvees++;
+				}
+	
+				etatsCartes[cartesRetournees[0]]=nouveauEtat;
+				etatsCartes[cartesRetournees[1]]=nouveauEtat;
+				setTimeout(function(){
+					majAffichage(cartesRetournees[0]);
+					majAffichage(cartesRetournees[1]);
+					cartesRetournees=[];
+					if(nbPairesTrouvees==8){
+						rejouer();
+					}
+				},750);
+			}
+		}
+	}
+			</script>
+	</section>
+	
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../CSS/style.css">
+<title>Memory</title>
+<body>
+	<section id="section-1">
+		<header>
+			<div class="gauche">
+			  <img src="../../ImagePagePrincipal/logo0.png" alt="logo" height="150xp">
+			</div>
+			<div class="droite">
+			  <nav>
+				<a href="../Memory/memory.html">Memory</a>
+				<a href="../PlusOuMoins/index.html">Plus ou Moins</a>
+				<a href="../Porte/TheDoor.html">Jeux des 3 portes</a>
+				<a href="../../ProjetTomEtDimitri/index.html">Téléportation</a>
+			  </nav>
+			</div>
+		  </header>
+		  <div class="container">
+			<div class="gauche2">
+				<div class="titre">
+					<h1>Memory</h1>
+				</div>
+				<h1>Régle du jeu</h1>
+				<p>Le premier joueur retourne deux cartes. Si les images sont identiques, il gagne la paire constituée et rejoue. Si les images sont différentes, il les repose faces cachées là où elles étaient et c'est au joueur suivant de jouer. La partie est terminée lorsque toutes les cartes ont été assemblées par paires.</p>
+				<a href="../../Index.html">Menu</a>
+			</div>
+				<div class="droite">
+				<table id="tapis">
+					<tr>
+						<td><img src="../Memory/fondcarte.png"></td>
+						<td><img src="../Memory/fondcarte.png"></td>
+						<td><img src="../Memory/fondcarte.png"></td>
+						<td><img src="../Memory/fondcarte.png"></td>
+					</tr>
+					<tr>
+						<td><img src="../Memory/fondcarte.png"></td>
+						<td><img src="../Memory/fondcarte.png"></td>
+						<td><img src="../Memory/fondcarte.png"></td>
+						<td><img src="../Memory/fondcarte.png"></td>
+					</tr>
+					<tr>
+						<td><img src="../Memory/fondcarte.png"></td>
+						<td><img src="../Memory/fondcarte.png"></td>
+						<td><img src="../Memory/fondcarte.png"></td>
+						<td><img src="../Memory/fondcarte.png"></td>
+					</tr>
+					<tr>
+						<td><img src="../Memory/fondcarte.png"></td>
+						<td><img src="../Memory/fondcarte.png"></td>
+						<td><img src="../Memory/fondcarte.png"></td>
+						<td><img src="../Memory/fondcarte.png"></td>
+					</tr>
+					
+					</table>
+					<script>
+						var motifsCartes=[1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8];
+			var etatsCartes=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]; 
+			/*etatsCartes=[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]*/
+			var cartesRetournees=[];
+			var nbPairesTrouvees=0;
+			var imgCartes=document.getElementById("tapis").getElementsByTagName("img");		
+			for(var i=0;i<imgCartes.length;i++){
+				imgCartes[i].noCarte=i; //Ajout de la propriété noCarte à l'objet img
+				imgCartes[i].onclick=function(){
+					controleJeu(this.noCarte);
+				}                      
+			}
+			initialiseJeu();
+			function majAffichage(noCarte){
+				switch(etatsCartes[noCarte]){
+					case 0:
+						imgCartes[noCarte].src="../Memory/fondcarte.png";
+						break;
+					case 1:
+						imgCartes[noCarte].src="../Memory/carte"+motifsCartes[noCarte]+".png" ;
+						break;
+					case -1:
+						imgCartes[noCarte].style.visibility="hidden";
+						break;
+				}
+			}
+			function rejouer(){
+				alert("Bravo !");
+				location.reload();
+			}
+			function initialiseJeu(){
+				for(var position=motifsCartes.length-1; position>=1; position--){
+					var hasard=Math.floor(Math.random()*(position+1));
+					var sauve=motifsCartes[position];
+					motifsCartes[position]=motifsCartes[hasard];
+					motifsCartes[hasard]=sauve;
+				}
+			}
+			function controleJeu(noCarte){
+				if(cartesRetournees.length<2){
+					if(etatsCartes[noCarte]==0){
+						etatsCartes[noCarte]=1;
+						cartesRetournees.push(noCarte);
+						majAffichage(noCarte);
+					}
+					if(cartesRetournees.length==2){
+						var nouveauEtat=0;
+						if(motifsCartes[cartesRetournees[0]]==motifsCartes[cartesRetournees[1]]){
+							nouveauEtat=-1;
+							nbPairesTrouvees++;
+						}
+
+						etatsCartes[cartesRetournees[0]]=nouveauEtat;
+						etatsCartes[cartesRetournees[1]]=nouveauEtat;
+						setTimeout(function(){
+							majAffichage(cartesRetournees[0]);
+							majAffichage(cartesRetournees[1]);
+							cartesRetournees=[];
+							if(nbPairesTrouvees==8){
+								rejouer();
+							}
+						},750);
+					}
+				}
+			}
+					</script>
+				</div>
+	</section>
+</body>
+</html>

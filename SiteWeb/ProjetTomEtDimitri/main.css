@@ -1,0 +1,285 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
+
+nav{
+    font-family: "nanum pen script", sans-serif;
+    font-size: 30px;
+    top: 0px;
+    left: 0px;
+    font-weight: bold;
+    position: fixed;
+    background-image: url(images/Bandeau.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: rgb(84, 210, 254);
+    opacity: 0.90;
+    width: 100%;
+    overflow: hidden;
+    padding-top: 0%;
+    list-style-type: none;
+    height: 10%;
+}
+header li {
+    float: right;
+    font-size: 1.2em;
+    margin-right: 30px;
+}
+header li a{
+    font-size: 35px;
+    margin-top: 10px;
+    margin-right: 75px;
+    color: black;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    padding: 18px 17px;
+    border-style:solid;
+    border-radius: 50px;
+}
+header li a:hover{
+    font-size: 35px;
+    margin-top: 10px;
+    margin-right: 75px;
+    color: white;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    padding: 18px 17px;
+    border-style:solid;
+    border-color: white;
+    border-radius: 50px;
+    background-color: rgb(100, 150, 254);
+    box-shadow: 2px 2px 15px 15px rgba(255, 255, 255, 0.6);
+}
+
+
+#logoEcrit{
+    color: white;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: bold;
+    float: left;
+}
+#avion{
+    height: 120px;
+    margin-left: 0%; 
+    margin-top: -10px;
+}
+
+---------------------------------------------------------PORTES--------------------------------------------------------*/
+
+#bodyPorte{
+    background-color: black;
+}
+#porteh1{
+    text-align: center;
+    color: black;
+    padding-top: 200px;
+    
+  }
+  
+  #porteDiv{
+    padding-left: 33%;
+    padding-right: 33%;
+    padding-top: 1%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  #portefinal{
+    text-align:center;
+    padding-top: 15%;
+    
+  }
+
+
+  /*---------------------------------------------------------RANDOM--------------------------------------------------------*/
+
+#bodyRandom{
+    background-color: #2ecc71;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+
+}
+#inputRandom{
+    font-size: 10em;
+    text-align: center;
+    width: 200px;
+    border: none;
+    background-color: rgba(255,255,255,.2);
+    outline: none;
+    color: #fff;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    padding: 10px;
+}
+.error{
+    background-color: #e74c3c;
+    border: 2px solid #e74d3c6b;
+}
+.fa-circle-check{
+    font-size: 10em;
+    color: #fff;
+    
+}
+.imgMemo{
+	cursor:pointer;
+    width: 150px; 
+    height: 200px;
+    vertical-align: middle;
+    position:static;
+    padding-left: 5px;
+}
+/*---------------------------------------------------------MEMORY--------------------------------------------------------*/
+#divRegle{
+    margin: 150px 100px 50px 100px;
+    padding: 30px 100px 0 100px;
+    background-color: rgba(84, 210, 254, 0.85);
+    border-style: solid;
+    border-radius: 100px;
+    font-family: "nanum pen script";
+    font-size: 45px;
+
+}
+#divRegleVictoire{
+    margin: 150px 100px 50px 100px;
+    padding: 150px 0px 0px 12%;
+    background-color: rgba(84, 210, 254, 0.85);
+    border-style: solid;
+    border-radius: 100px;
+    font-family: "nanum pen script";
+    font-size: 70px;
+    width: 800px;
+}
+#boutonRejouer{
+    margin-left: 100px;
+    width: 300px;
+    height: 100px;
+    border-style: solid;
+    border-radius: 15px;
+    text-align: center;
+    background-color: rgba(84, 210, 254, 0.85);
+    color: black;
+}
+#boutonRejouer:hover{
+    margin-left: 100px;
+    width: 300px;
+    height: 100px;
+    border: solid white;
+    border-radius: 15px;
+    text-align: center;
+    color: black;
+    box-shadow: 2px 2px 15px 15px rgba(255, 255, 255, 0.6);
+    background-color: rgb(100, 150, 254);
+}
+#boutonRejouerA{
+    color: white;
+}
+#boutonRejouerA:hover{
+    color: black;
+}
+
+/*---------------------------------------------------------ACCUEIL--------------------------------------------------------*/
+
+body{
+    background-image: url(images/salle-de-jeux-enfants.jpg);
+}
+ul{
+    margin-top: 200px;
+    display: block;
+    margin-right: 0px;
+    list-style-type: none;
+    font-weight: bold;
+    padding-right: 0px;
+    justify-content: space-between;
+    
+}
+ul li {
+    float: right;
+    font-size: 1.2em;
+    margin-right: 220px;
+    margin-bottom: 100px;
+}
+
+ul .choixJeu{
+    font-family: "nanum pen script", sans-serif;
+    font-size: 50px;
+    margin-top: 35px;
+    margin-right: 5px;
+    color: black;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    padding: 18px 17px;
+    background-color: rgba(84, 210, 254, 0.6);
+    border-style: solid;
+    border-radius: 50px;
+}
+ul .choixJeu:hover{
+    font-family: "nanum pen script", sans-serif;
+    font-size: 50px;
+    margin-top: 35px;
+    margin-right: 5px;
+    color: black;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    padding: 18px 17px;
+    background-color: rgba(100, 150, 254, 0.6);
+    border-radius: 50px;
+    box-shadow: 0px 0px 17px 30px rgba(195, 196, 197, 0.479);
+    
+}
+.imageJeu{
+    height: 400px ;
+    outline: 1px solid grey;
+    border-radius: 50px;
+    box-shadow: 0px 0px 17px 17px #948f8f;
+    background-color: rgba(255, 255, 255, 0.80);
+}
+.imageJeu:hover{
+    height: 400px ;
+    outline: 3px solid black;
+    border-radius: 50px;
+    box-shadow: 0px 0px 30px 17px rgb(84, 210, 254);
+    background-color: rgba(255, 255, 255, 0.80);
+}
+
+.imageJeuDiv{
+    display: inline;
+    margin-left: 120px;  
+}
+
+#boutonVersClemEtSven{
+    left: 88%;
+    top: 2.5%;
+    position: fixed;
+    border: solid black;
+    width: 180px;
+    list-style-type: none;
+    text-decoration: none;
+    color: black;
+    border-radius: 50px;
+    text-align: center;
+    z-index: 1;
+}
+#boutonVersClemEtSven:hover{
+    z-index: 1;
+    left: 88%;
+    top: 2.5%;
+    position: fixed;
+    border: solid white;
+    width: 180px;
+    list-style-type: none;
+    text-decoration: none;
+    color: white;
+    border-radius: 50px;
+    background-color: rgba(100, 150, 254, 0.6);
+    box-shadow: 0px 0px 17px 10px rgba(255, 255, 255, 0.479);
+}
+
+/*---------------------------------------------------------RANDOM--------------------------------------------------------*/
